@@ -18,6 +18,7 @@ from app.routes.conversations import router as conversations_router
 from app.routes.agents import router as agents_router
 from app.routes.knowledge import router as knowledge_router
 from app.routes.analytics import router as analytics_router
+from app.routers.knowledge import router as knowledge_router
 
 # Configure logging
 logging.basicConfig(
@@ -68,6 +69,8 @@ app = FastAPI(
     docs_url="/docs",
     redoc_url="/redoc",
 )
+
+app.include_router(knowledge_router)
 
 # Configure CORS
 app.add_middleware(
